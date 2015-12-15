@@ -1,10 +1,8 @@
-var todo = angular.module('todo', []);
-
-function mainController($scope, $http) {
+todoList.controller("todoListController", function($scope, todoFactory) {
   $scope.todo = {};
 
   // getting all todos when loading page
-  $http.get('/api/todos')
+  todoFactory.getTodoList()
     .success(function(data) {
       $scope.todos = data;
       console.log(data);
@@ -15,7 +13,7 @@ function mainController($scope, $http) {
 
   // create todo
   $scope.createTodo = function() {
-    $http.post('/api/todos', $scope.todo)
+    todoFactory.saveTodo($scope.todo)
       .success(function(data) {
         $scope.todo = {};
         $scope.todos = data;
@@ -28,7 +26,7 @@ function mainController($scope, $http) {
 
   // deleting a todo after checking it
   $scope.deleteTodo = function(id) {
-    $http.delete('/api/todos/' + id)
+    todoFactory.deleteTodo(id)
       .success(function(data) {
         $scope.todos = data;
         console.log(data);
@@ -37,4 +35,4 @@ function mainController($scope, $http) {
         console.log('Error: ' + data);
       });
   }
-}
+});

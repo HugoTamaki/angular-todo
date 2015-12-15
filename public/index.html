@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="todo">
+<html ng-app="todoList">
 <head>
   <meta charset="UTF-8">
   <title>Lerinho</title>
@@ -11,9 +11,11 @@
   </style>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-  <script src="core.js"></script>
+  <script src="app.js"></script>
+  <script src="services/todoAPIService.js"></script>
+  <script src="controllers/todoListCtrl.js"></script>
 </head>
-<body ng-controller="mainController">
+<body ng-controller="todoListController">
   <div class="container">
     <div class="jumbotron text-center">
       <h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
